@@ -1,5 +1,7 @@
 <template>
-    <el-main>meeting-record</el-main>
+    <el-main style="text-align: center; color: #bbb; margin-top: 20px;">
+        会议记录：暂未开通...
+    </el-main>
 </template>
 
 <script>

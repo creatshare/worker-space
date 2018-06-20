@@ -1,5 +1,7 @@
 <template>
-    <el-main>personal-space</el-main>
+    <el-main style="text-align: center; color: #bbb; margin-top: 20px;">
+        个人空间：暂未开通...
+    </el-main>
 </template>
 
 <script>

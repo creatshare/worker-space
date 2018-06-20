@@ -5,6 +5,9 @@ Vue.use(Router)
 
 const route = new Router({
     routes: [{
+        path: '/',
+        redirect: '/workingdesk'
+    }, {
         path: '/workingdesk',
         name: 'WorkingDesk',
         // 工作平台

@@ -1,10 +1,17 @@
 <template>
-    <el-main>working-desk</el-main>
+    <el-main>
+        <api-doc></api-doc>
+    </el-main>
 </template>
 
 <script>
+    import ApiDoc from './component/api-doc/api-doc.vue'
+
     export default {
-        name: "working-desk"
+        name: "working-desk",
+        components: {
+            ApiDoc
+        },
     }
 </script>
 
