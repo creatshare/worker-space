@@ -1,12 +1,13 @@
 <template>
-    <el-main>working-desk</el-main>
+    <el-main>meeting-record</el-main>
 </template>
 
 <script>
     export default {
-        name: "working-desk"
+        name: "meeting-record"
     }
 </script>
 
 <style scoped>
+
 </style>

@@ -1,12 +1,13 @@
 <template>
-    <el-main>working-desk</el-main>
+    <el-main>personal-space</el-main>
 </template>
 
 <script>
     export default {
-        name: "working-desk"
+        name: "personal-space"
     }
 </script>
 
 <style scoped>
+
 </style>

@@ -10,16 +10,20 @@
                     <div class="ip-menu">
                         <ul class="ivu-menu ivu-menu-light ivu-menu-horizontal">
                             <li class="ivu-menu-item ivu-menu-item-active ivu-menu-item-selected">
-                                <i class="el-icon-news"></i><span>工作平台</span>
+                                <i class="el-icon-news"></i>
+                                <span><router-link to="/workingdesk">工作平台</router-link></span>
                             </li>
                             <li class="ivu-menu-item ivu-menu-item-active ivu-menu-item-selected">
-                                <i class="el-icon-edit"></i><span>会议记录</span>
+                                <i class="el-icon-edit"></i>
+                                <span><router-link to="/meetingrecord">会议记录</router-link></span>
                             </li>
                             <li class="ivu-menu-item ivu-menu-item-active ivu-menu-item-selected">
-                                <i class="el-icon-service"></i><span>论坛畅聊</span>
+                                <i class="el-icon-service"></i>
+                                <span><router-link to="/forumchatting">论坛畅聊</router-link></span>
                             </li>
                             <li class="ivu-menu-item ivu-menu-item-active ivu-menu-item-selected">
-                                <i class="el-icon-setting"></i><span>个人空间</span>
+                                <i class="el-icon-setting"></i>
+                                <span><router-link to="/personalspace">个人空间</router-link></span>
                             </li>
                         </ul>
                     </div>
