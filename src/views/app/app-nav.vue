@@ -13,18 +13,22 @@
                                 <i class="el-icon-news"></i>
                                 <span><router-link to="/workingdesk">工作平台</router-link></span>
                             </li>
-                            <li class="ivu-menu-item ivu-menu-item-active ivu-menu-item-selected">
-                                <i class="el-icon-edit"></i>
-                                <span><router-link to="/meetingrecord">会议记录</router-link></span>
-                            </li>
-                            <li class="ivu-menu-item ivu-menu-item-active ivu-menu-item-selected">
-                                <i class="el-icon-service"></i>
-                                <span><router-link to="/forumchatting">论坛畅聊</router-link></span>
-                            </li>
-                            <li class="ivu-menu-item ivu-menu-item-active ivu-menu-item-selected">
-                                <i class="el-icon-setting"></i>
-                                <span><router-link to="/personalspace">个人空间</router-link></span>
-                            </li>
+                            <!--<li class="ivu-menu-item ivu-menu-item-active ivu-menu-item-selected">-->
+                                <!--<i class="el-icon-edit"></i>-->
+                                <!--<span><router-link to="/meetingrecord">会议记录</router-link></span>-->
+                            <!--</li>-->
+                            <!--<li class="ivu-menu-item ivu-menu-item-active ivu-menu-item-selected">-->
+                                <!--<i class="el-icon-service"></i>-->
+                                <!--<span><router-link to="/forumchatting">论坛畅聊</router-link></span>-->
+                            <!--</li>-->
+                            <!--<li class="ivu-menu-item ivu-menu-item-active ivu-menu-item-selected">-->
+                                <!--<i class="el-icon-view"></i>-->
+                                <!--<span><router-link to="/roleauthority">权限管理</router-link></span>-->
+                            <!--</li>-->
+                            <!--<li class="ivu-menu-item ivu-menu-item-active ivu-menu-item-selected">-->
+                                <!--<i class="el-icon-setting"></i>-->
+                                <!--<span><router-link to="/personalspace">个人空间</router-link></span>-->
+                            <!--</li>-->
                         </ul>
                     </div>
                 </div>
@@ -182,7 +186,7 @@
     }
 
     .header .header-mid {
-        width: 320px;
+        width: 80px;
         height: 70px;
         display: inline-block;
         margin: auto;

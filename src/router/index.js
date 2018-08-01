@@ -26,6 +26,12 @@ const route = new Router({
         component: () =>
             import ('@/views/forum-chatting/forum-chatting')
     }, {
+        path: '/roleauthority',
+        name: 'RoleAuthority',
+        // 论坛畅聊
+        component: () =>
+            import ('@/views/role-authority/role-authority')
+    }, {
         path: '/personalspace',
         name: 'PersonalSpace',
         // 个人空间

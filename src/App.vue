@@ -1,14 +1,7 @@
 <template>
   <div id="app">
-    <el-container>
-      <el-header>
-        <app-nav></app-nav>
-      </el-header>
-
-      <el-container>
-        <router-view></router-view>
-      </el-container>
-    </el-container>
+      <app-nav></app-nav>
+      <router-view></router-view>
   </div>
 </template>
 
@@ -24,14 +17,22 @@ export default {
 </script>
 
 <style>
+  html {
+    background: #f4f5f7;
+  }
+
   body {
     margin: 0;
     padding: 0;
     height: 100%;
   }
 
+  article, aside, blockquote, body, button, dd, details, div, dl, dt, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, input, legend, li, menu, nav, ol, p, section, td, textarea, th, ul {
+    margin: 0;
+    padding: 0;
+  }
+
   #app {
     background-color: #f4f5f7;
-    height: 100vh;
   }
 </style>
