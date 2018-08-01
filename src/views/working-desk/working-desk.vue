@@ -15,8 +15,7 @@
         <div class="cards-wrapper">
             <div id="cards-container">
                 <org-struct></org-struct>
-                <org-struct></org-struct>
-                <org-struct></org-struct>
+                <api-doc></api-doc>
             </div>
         </div>
     </div>
@@ -24,19 +23,13 @@
 
 <script>
     import OrgStruct from '../../card/org-struct-card/org-struct-card.vue'
-    import SelfInfo from '../../card/self-info-card/self-info-card.vue'
-    import AuthManage from '../../card/auth-manage-card/auth-manage-card.vue'
     import ApiDoc from '../../card/api-doc-card/api-doc-card.vue'
-    import AttendSystem from '../../card/attent-system-card/attent-system-card.vue'
 
     export default {
         name: "working-desk",
         components: {
             OrgStruct,
-            SelfInfo,
-            AuthManage,
             ApiDoc,
-            AttendSystem
         },
     }
 </script>

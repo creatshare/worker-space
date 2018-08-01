@@ -13,30 +13,6 @@ const route = new Router({
         // 工作平台
         component: () =>
             import ('@/views/working-desk/working-desk')
-    }, {
-        path: '/meetingrecord',
-        name: 'MeetingRecord',
-        // 会议记录
-        component: () =>
-            import ('@/views/meeting-record/meeting-record')
-    }, {
-        path: '/forumchatting',
-        name: 'ForumChatting',
-        // 论坛畅聊
-        component: () =>
-            import ('@/views/forum-chatting/forum-chatting')
-    }, {
-        path: '/roleauthority',
-        name: 'RoleAuthority',
-        // 论坛畅聊
-        component: () =>
-            import ('@/views/role-authority/role-authority')
-    }, {
-        path: '/personalspace',
-        name: 'PersonalSpace',
-        // 个人空间
-        component: () =>
-            import ('@/views/personal-space/personal-space')
     }]
 })
 
