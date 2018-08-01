@@ -14,41 +14,42 @@
             </div>
 
             <div class="card-inner-container">
-                <el-row :gutter="20">
-                    <el-col :span="12">
-                        <el-select v-model="value9" filterable placeholder="请选择">
-                            <el-option
-                                    v-for="item in options[0].children"
-                                    :key="item.key"
-                                    :label="item.label"
-                                    :value="item.key">
-                            </el-option>
-                        </el-select>
-                    </el-col>
-                    <el-col :span="12">
-                        搜索
-                    </el-col>
-                </el-row>
-                <el-table
-                        :data="tableData"
-                        style="width: 100%">
-                    <el-table-column
-                            prop="name"
-                            label="成员">
-                    </el-table-column>
-                    <el-table-column
-                            prop="profession"
-                            label="专业">
-                    </el-table-column>
-                    <el-table-column
-                            label="主页">
-                        <template slot-scope="scope">
-                            <el-button type="primary" size="mini">
-                                访问
-                            </el-button>
-                        </template>
-                    </el-table-column>
-                </el-table>
+                <!--<el-row :gutter="20">-->
+                    <!--<el-col :span="12">-->
+                        <!--<el-select v-model="selectedGroupId" filterable placeholder="请选择">-->
+                            <!--<el-option-->
+                                    <!--v-for="item in options[0].children"-->
+                                    <!--:key="item.key"-->
+                                    <!--:label="item.label"-->
+                                    <!--:value="item.key">-->
+                            <!--</el-option>-->
+                        <!--</el-select>-->
+                    <!--</el-col>-->
+                    <!--<el-col :span="12">-->
+                        <!--搜索-->
+                    <!--</el-col>-->
+                <!--</el-row>-->
+
+                <!--<el-table-->
+                        <!--:data="tableData"-->
+                        <!--style="width: 100%">-->
+                    <!--<el-table-column-->
+                            <!--prop="name"-->
+                            <!--label="成员">-->
+                    <!--</el-table-column>-->
+                    <!--<el-table-column-->
+                            <!--prop="profession"-->
+                            <!--label="专业">-->
+                    <!--</el-table-column>-->
+                    <!--<el-table-column-->
+                            <!--label="主页">-->
+                        <!--<template slot-scope="scope">-->
+                            <!--<el-button type="primary" size="mini">-->
+                                <!--访问-->
+                            <!--</el-button>-->
+                        <!--</template>-->
+                    <!--</el-table-column>-->
+                <!--</el-table>-->
             </div>
 
             <div class="card-setting-panel card-setting-panel-active">
@@ -78,51 +79,14 @@
 </template>
 
 <script>
+    import { allMembers } from './api'
+
     export default {
         name: "org-struct-card",
         data() {
             return {
-                options: [{
-                    key: 8,
-                    label: '产品技术部',
-                    children: [{
-                        key: 1,
-                        label: '产品组'
-                    }, {
-                        key: 2,
-                        label: '运营组'
-                    }, {
-                        key: 3,
-                        label: '视觉组'
-                    }, {
-                        key: 4,
-                        label: '前端组'
-                    }, {
-                        key: 5,
-                        label: '后端租'
-                    }]
-                }, {
-                    key: 9,
-                    label: '效能平台部',
-                    children: [{
-                        key: 6,
-                        label: 'Web 组'
-                    }, {
-                        key: 7,
-                        label: '区块链组'
-                    }]
-                }],
-                value8: '',
-                value9: '',
-                tableData: [{
-                    name: '韩亦乐',
-                    profession: '软件工程',
-                    link: 'http...'
-                }, {
-                    name: '某某某',
-                    profession: '某某某某',
-                    link: 'http...'
-                }]
+                allMembers: allMembers,
+                selectedGroupId: [],
             }
         },
         methods: {
