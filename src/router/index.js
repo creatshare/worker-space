@@ -8,6 +8,12 @@ const route = new Router({
         path: '/',
         redirect: '/workingdesk'
     }, {
+        path: '/login',
+        name: '',
+        // 工作平台
+        component: () =>
+            import ('@/views/login/login')
+    }, {
         path: '/workingdesk',
         name: 'WorkingDesk',
         // 工作平台

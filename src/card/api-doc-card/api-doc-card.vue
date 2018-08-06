@@ -40,7 +40,7 @@
                             width="70">
                         <template slot-scope="scope">
                             <el-button type="primary" size="mini">
-                                访问
+                                <a :href="scope.row.link" target="_blank">访问</a>
                             </el-button>
                         </template>
                     </el-table-column>
