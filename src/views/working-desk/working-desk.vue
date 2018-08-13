@@ -15,7 +15,7 @@
         <div class="cards-wrapper">
             <div id="cards-container">
                 <org-struct></org-struct>
-                <api-doc></api-doc>
+                <card-manage></card-manage>
             </div>
         </div>
     </div>
@@ -23,14 +23,51 @@
 
 <script>
     import OrgStruct from '../../card/org-struct-card/org-struct-card.vue'
-    import ApiDoc from '../../card/api-doc-card/api-doc-card.vue'
+    import CardManage from '../../card/card-manage-card/card-manage-card.vue'
+    import * as api from './api.js'
 
     export default {
         name: "working-desk",
         components: {
             OrgStruct,
-            ApiDoc,
+            CardManage
         },
+        data () {
+            return {
+                userCardList: []
+            }
+        },
+        mounted () {
+            this.getCardList()
+                .then(() => { this.sortCardList() })
+
+            console.log(this.userCardList)
+        },
+        methods: {
+            async getCardList () {
+                this.userCardList = await api.userCardList
+            },
+            // 动态加载卡片，遍历展示
+            // setCardCompList () {
+            //     let cardName = this.userCardList[0].enName
+            //     console.log(cardName)
+            //     return require(`../../card/${cardName}/${cardName}-card.vue`)
+            // },
+            // 根据卡片 orderby 顺序排序卡片
+            sortCardList () {
+                // ...
+                // 排序的比较函数
+                let compareObj = (property) => {
+                    return function(obj1, obj2){
+                        let value1 = obj1[property];
+                        let value2 = obj2[property];
+                        // 升序, 序号小的在开头
+                        return value1 - value2;
+                    }
+                }
+                this.userCardList = this.userCardList.sort(compareObj("orderBy"));
+            }
+        }
     }
 </script>
 

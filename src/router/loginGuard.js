@@ -1,5 +1,5 @@
-import { $get } from '../util/ajax'
-import { setTicket, setUsername, getTicket, getUsername } from '../util/util'
+import { $get } from '../commons/ajax'
+import { setTicket, setUsername, getTicket, getUsername } from '../commons/util'
 
 export default (to, from, next) => {
     checkLogin({ticket: getTicket(), isTestEnv})

@@ -2,7 +2,7 @@
     <div class="card-container card-container-1" shadow="hover" :body-style="{ padding: '10px' }">
         <div class="card-wrap-padding">
 
-            <h3 class="card-title"><a>接口文档</a></h3>
+            <h3 class="card-title"><a>卡片管理</a></h3>
 
             <div class="card-head-btns">
                 <span></span>
@@ -14,37 +14,42 @@
             </div>
 
             <div class="card-inner-container">
-                <el-table
-                        :data="tableData"
-                        class="table"
-                        :show-header="false">
-                    <el-table-column
-                            prop="name"
-                            label="文档"
-                            width="180">
-                    </el-table-column>
-                    <el-table-column
-                            prop="tag"
-                            label="种类"
-                            width="70"
-                            filter-placement="bottom-end">
-                        <template slot-scope="scope">
-                            <el-tag
-                                    style="height: 28px; line-height: 26px;"
-                                    :type="getTagColor(scope.row.tag)"
-                                    disable-transitions>{{scope.row.tag}}</el-tag>
-                        </template>
-                    </el-table-column>
-                    <el-table-column
-                            label="操作"
-                            width="70">
-                        <template slot-scope="scope">
-                            <el-button type="primary" size="mini">
-                                <a :href="scope.row.link" target="_blank">访问</a>
-                            </el-button>
-                        </template>
-                    </el-table-column>
-                </el-table>
+                <!--<el-row :gutter="20">-->
+                    <!--<el-col :span="12">-->
+                        <!--<el-select v-model="selectedGroupId" filterable placeholder="请选择">-->
+                            <!--<el-option-->
+                                    <!--v-for="item in options[0].children"-->
+                                    <!--:key="item.key"-->
+                                    <!--:label="item.label"-->
+                                    <!--:value="item.key">-->
+                            <!--</el-option>-->
+                        <!--</el-select>-->
+                    <!--</el-col>-->
+                    <!--<el-col :span="12">-->
+                        <!--搜索-->
+                    <!--</el-col>-->
+                <!--</el-row>-->
+
+                <!--<el-table-->
+                        <!--:data="tableData"-->
+                        <!--style="width: 100%">-->
+                    <!--<el-table-column-->
+                            <!--prop="name"-->
+                            <!--label="成员">-->
+                    <!--</el-table-column>-->
+                    <!--<el-table-column-->
+                            <!--prop="profession"-->
+                            <!--label="专业">-->
+                    <!--</el-table-column>-->
+                    <!--<el-table-column-->
+                            <!--label="主页">-->
+                        <!--<template slot-scope="scope">-->
+                            <!--<el-button type="primary" size="mini">-->
+                                <!--访问-->
+                            <!--</el-button>-->
+                        <!--</template>-->
+                    <!--</el-table-column>-->
+                <!--</el-table>-->
             </div>
 
             <div class="card-setting-panel card-setting-panel-active">
@@ -52,17 +57,17 @@
                     <ul class="items">
                         <li>
                             <div role="setting" class="panel-item">
-                                <i class="iconfont bg-yellow"><i class="el-icon-edit"></i></i>编辑接口
+                                <i class="iconfont bg-yellow"><i class="el-icon-edit"></i></i>编辑成员
                             </div>
                         </li>
                         <li>
                             <div role="destroy" class="panel-item">
-                                <i class="iconfont bg-red"><i class="el-icon-delete"></i></i>删除接口
+                                <i class="iconfont bg-red"><i class="el-icon-delete"></i></i>删除成员
                             </div>
                         </li>
                         <li>
                             <div role="move" class="panel-item">
-                                <i class="iconfont bg-green"><i class="el-icon-plus"></i></i>新增接口
+                                <i class="iconfont bg-green"><i class="el-icon-plus"></i></i>新增成员
                             </div>
                         </li>
                     </ul>
@@ -74,34 +79,18 @@
 </template>
 
 <script>
-    import { apiDocInfo } from './api'
+    import { allMembers } from './api'
 
     export default {
-        name: "api-doc-card",
+        name: "card-manage-card",
         data() {
             return {
-                tableData: apiDocInfo
+                allMembers: allMembers,
+                selectedGroupId: [],
             }
         },
         methods: {
-            getTagColor (name) {
-                let color = ''
-                switch (name) {
-                    case '校园':
-                        color = 'primary'
-                        break;
-                    case '内部':
-                        color = 'success'
-                        break;
-                    case '参赛':
-                        color = 'warning'
-                        break;
-                    case '外包':
-                        color = 'info'
-                        break;
-                }
-                return color
-            }
+
         }
     }
 </script>
@@ -185,7 +174,7 @@
     /* card 隐藏面板 */
 
     .card-setting-panel.card-setting-panel-active {
-        display: none;
+        display: block;
         height: 195px;
     }
 

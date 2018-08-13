@@ -5,7 +5,7 @@
 ```
 vue create worker-space
 cnpm i -S vue element axios
-cnpm i -D vue-router mockjs
+cnpm i -D vue-router mockjs express
 ```
 
 ## 本地开发
@@ -33,6 +33,7 @@ cnpm serve
 |----|----|----|----|----|
 |团队成员卡片|org-struct-card|1*1|正在开发|5|
 |个人资料卡片|self-info-card|1*1|界面雏形|5|
+|卡片管理卡片|card-manage-card|1*1|界面雏形|5|
 |权限管理卡片|auth-manage-card|1*1|界面雏形|5|
 |接口文档卡片|api-doc-card|1*1|界面雏形|4|
 |考勤系统卡片|attend-system-card|1*1|界面雏形|4|
