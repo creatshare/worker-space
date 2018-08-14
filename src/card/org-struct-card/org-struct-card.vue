@@ -7,69 +7,32 @@
             <div class="card-head-btns">
                 <span></span>
                 <span class="head-btn md-design" tabindex="-1">
-                    <el-button type="text">
-                        <i class="iconfont"><i class="el-icon-more"></i></i>
+                    <el-button type="text" @click="toggleSettingPanel()">
+                        <i class="iconFont"><i class="el-icon-more"></i></i>
                     </el-button>
                 </span>
             </div>
 
             <div class="card-inner-container">
-                <!--<el-row :gutter="20">-->
-                    <!--<el-col :span="12">-->
-                        <!--<el-select v-model="selectedGroupId" filterable placeholder="请选择">-->
-                            <!--<el-option-->
-                                    <!--v-for="item in options[0].children"-->
-                                    <!--:key="item.key"-->
-                                    <!--:label="item.label"-->
-                                    <!--:value="item.key">-->
-                            <!--</el-option>-->
-                        <!--</el-select>-->
-                    <!--</el-col>-->
-                    <!--<el-col :span="12">-->
-                        <!--搜索-->
-                    <!--</el-col>-->
-                <!--</el-row>-->
 
-                <!--<el-table-->
-                        <!--:data="tableData"-->
-                        <!--style="width: 100%">-->
-                    <!--<el-table-column-->
-                            <!--prop="name"-->
-                            <!--label="成员">-->
-                    <!--</el-table-column>-->
-                    <!--<el-table-column-->
-                            <!--prop="profession"-->
-                            <!--label="专业">-->
-                    <!--</el-table-column>-->
-                    <!--<el-table-column-->
-                            <!--label="主页">-->
-                        <!--<template slot-scope="scope">-->
-                            <!--<el-button type="primary" size="mini">-->
-                                <!--访问-->
-                            <!--</el-button>-->
-                        <!--</template>-->
-                    <!--</el-table-column>-->
-                <!--</el-table>-->
             </div>
 
-            <div class="card-setting-panel card-setting-panel-active">
+            <!-- 操作面板按钮组 -->
+            <div class="card-setting-panel" :style="{ height: cardSettingPanelHeight + 'px' }">
                 <div class="card-setting-panel-inner">
                     <ul class="items">
-                        <li>
-                            <div role="setting" class="panel-item">
-                                <i class="iconfont bg-yellow"><i class="el-icon-edit"></i></i>编辑成员
-                            </div>
-                        </li>
-                        <li>
-                            <div role="destroy" class="panel-item">
-                                <i class="iconfont bg-red"><i class="el-icon-delete"></i></i>删除成员
-                            </div>
-                        </li>
-                        <li>
-                            <div role="move" class="panel-item">
-                                <i class="iconfont bg-green"><i class="el-icon-plus"></i></i>新增成员
-                            </div>
-                        </li>
+                        <el-row class="card-row">
+                            <el-col :span="8" v-for="btn in cardButtons" :key="btn.id">
+                                <li :class="{ disabled: btn.disabled }">
+                                    <div :role="btn.enName" class="panel-item">
+                                        <!-- 设置图标背景颜色，当图标不可点击时，背景颜色为灰色 -->
+                                        <i :class="'iconFont ' + btn.bgColorName">
+                                            <i :class="'fa ' + btn.iconClass"></i>
+                                        </i> {{ btn.name }}
+                                    </div>
+                                </li>
+                            </el-col>
+                        </el-row>
                     </ul>
                     <div class="panel-copyright">卡片由 <a href="http://www.creatshare.com" target="_blank">@CreatShare</a> 提供</div>
                 </div>
@@ -79,18 +42,44 @@
 </template>
 
 <script>
-    import { allMembers } from './api'
+    import { getCardButtons, getCardContributor } from './api'
 
     export default {
         name: "org-struct-card",
         data() {
             return {
-                allMembers: allMembers,
                 selectedGroupId: [],
+                cardSettingPanelHeight: 0,
+                // 当前 card 下的所有按钮信息
+                cardButtons: '',
+                // 当前 card 的所有贡献者
+                cardContributor: ''
             }
         },
+        created () {
+            this.setCardBtns()
+            this.setCardContributor()
+        },
         methods: {
-
+            async setCardBtns () {
+                const { data } = await getCardButtons()
+                // 判断每个按钮是否可以点击，不可点击的覆盖默认背景颜色为 bg-grey 灰色
+                Object.keys(data).forEach(btnsName => {
+                    data[btnsName].map(btn => {
+                        // 不可点击，覆盖默认背景颜色为 bg-grey 灰色
+                        btn.bgColorName = btn.disabled ? 'bg-grey' : btn.bgColorName
+                    })
+                })
+                this.cardButtons = data.cardButtons
+            },
+            async setCardContributor () {
+                const { data } = await getCardContributor()
+                this.cardContributor = data
+            },
+            toggleSettingPanel () {
+                // 通过改变高度改变操作面板的显示状态(有动画), 隐藏时高度为 0, 显示时高度为 275px, 默认隐藏
+                this.cardSettingPanelHeight = (this.cardSettingPanelHeight === 0) ? 275 : 0
+            }
         }
     }
 </script>
@@ -171,36 +160,23 @@
         height: 300px;
     }
 
-    /* card 隐藏面板 */
-
-    .card-setting-panel.card-setting-panel-active {
-        display: block;
-        height: 195px;
-    }
-
     .card-setting-panel {
-        display: none;
+        display: block;
         font-size: 14px;
         position: absolute;
         bottom: 0;
         left: 0;
         width: 100%;
-        height: 0;
+        /* 隐藏时高度为 0, 显示时高度为 275px, 默认隐藏 */
+        /* height: 0; */
         -webkit-transition: height .3s ease;
         transition: height .3s ease;
         overflow: hidden;
     }
 
-    .card-setting-panel.card-setting-panel-active .card-setting-panel-inner {
-        height: 175px;
-    }
-
     .card-setting-panel .card-setting-panel-inner {
+        height: 255px;
         background: #fff;
-    }
-
-    .card-setting-panel .card-setting-panel-inner {
-        height: 0;
         position: absolute;
         bottom: 0;
         width: 100%;
@@ -213,19 +189,26 @@
     }
 
     .card-setting-panel .items {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
         text-align: center;
+        height: 215px;
+    }
+
+    .card-row {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        height: 215px;
+        /* 这里的 width 多出 15 px 可以让滚动条看不见 */
+        width: 375px;
     }
 
     .card-setting-panel .items li {
-        -webkit-box-flex: 1;
-        -ms-flex: 1;
-        flex: 1;
-        margin: 42px 0 34px;
+        margin: 16px 0;
         font-size: 12px;
         cursor: pointer;
+    }
+
+    .card-container .card-setting-panel .items li.disabled {
+        cursor: not-allowed;
     }
 
     .card-setting-panel .items .panel-item {
@@ -233,19 +216,23 @@
         width: 100%;
     }
 
+    .card-setting-panel .items .bg-orange {
+        background: #ffa36d;
+    }
+
     .card-setting-panel .items .bg-yellow {
-        background: #eea026;
+        background: #ffd153;
     }
 
-    .card-setting-panel .items .bg-red {
-        background: #ff5362;
+    .card-setting-panel .items .bg-blue {
+        background: #7ebbff;
     }
 
-    .card-setting-panel .items .bg-green {
-        background: #66d85f;
+    .card-setting-panel .items .bg-grey {
+        background: #f4f5f7;
     }
 
-    .card-setting-panel .items .iconfont {
+    .card-setting-panel .items .iconFont {
         display: block;
         width: 36px;
         height: 36px;
@@ -257,8 +244,8 @@
         margin-bottom: 6px;
     }
 
-    .iconfont {
-        font-family: iconfont!important;
+    .iconFont {
+        font-family: iconFont!important;
         font-size: 16px;
         font-style: normal;
         -webkit-font-smoothing: antialiased;

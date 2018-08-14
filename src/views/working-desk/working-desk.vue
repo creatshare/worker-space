@@ -15,7 +15,6 @@
         <div class="cards-wrapper">
             <div id="cards-container">
                 <org-struct></org-struct>
-                <card-manage></card-manage>
             </div>
         </div>
     </div>
@@ -23,14 +22,12 @@
 
 <script>
     import OrgStruct from '../../card/org-struct-card/org-struct-card.vue'
-    import CardManage from '../../card/card-manage-card/card-manage-card.vue'
     import * as api from './api.js'
 
     export default {
         name: "working-desk",
         components: {
-            OrgStruct,
-            CardManage
+            OrgStruct
         },
         data () {
             return {
@@ -40,8 +37,6 @@
         mounted () {
             this.getCardList()
                 .then(() => { this.sortCardList() })
-
-            console.log(this.userCardList)
         },
         methods: {
             async getCardList () {

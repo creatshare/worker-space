@@ -5,7 +5,7 @@
 ```
 vue create worker-space
 cnpm i -S vue element axios
-cnpm i -D vue-router mockjs express
+cnpm i -D vue-router mockjs express font-awesome sass-loader node-sass
 ```
 
 ## 本地开发

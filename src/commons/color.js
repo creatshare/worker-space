@@ -1,4 +1,6 @@
-export const csColor = {
-    bgGrey: '#f4f5f7',
-    blue: '#02aae4'
-}
+// export const csColor = {
+//     csBlue: '#3198ff',
+//     btnOrange: '#ffa36d',
+//     btnYellow: '#ffd153',
+//     btnBlue: '#7ebbff'
+// }
