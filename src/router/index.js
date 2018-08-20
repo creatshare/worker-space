@@ -3,7 +3,7 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-const route = new Router({
+const routes = new Router({
     routes: [{
         path: '/',
         redirect: '/workingdesk'
@@ -22,4 +22,17 @@ const route = new Router({
     }]
 })
 
-export default route
+// routes.beforeEach((to, from, next) => {
+//     const list = store.getters['user/buttonRole']
+//     // console.log(to)
+//     // if (!list.some(i => i.source === to.path) && to.path !== '/403') {
+//     //     // console.log('next')
+//     //     next('/403')
+//     // } else if (to.path === '/403') {
+//     //     next()
+//     // } else {
+//     next()
+//     // }
+// })
+
+export default routes

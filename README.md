@@ -4,7 +4,7 @@
 
 ```
 vue create worker-space
-cnpm i -S vue element axios
+cnpm i -S vue element axios vuex
 cnpm i -D vue-router mockjs express font-awesome sass-loader node-sass
 ```
 
