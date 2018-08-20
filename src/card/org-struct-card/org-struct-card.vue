@@ -14,7 +14,57 @@
             </div>
 
             <div class="card-inner-container">
-
+                <el-table
+                        :data="tableData"
+                        style="width: 100%"
+                        max-height="300"
+                        :default-sort = "{prop: 'date', order: 'descending'}"
+                >
+                    <el-table-column
+                            prop="name"
+                            width="77"
+                            label="姓名"
+                            fixed
+                            sortable>
+                    </el-table-column>
+                    <el-table-column
+                            prop="profession"
+                            width="180"
+                            label="专业">
+                    </el-table-column>
+                    <el-table-column
+                            prop="classes"
+                            width="55"
+                            label="班级">
+                    </el-table-column>
+                    <el-table-column
+                            prop="direction"
+                            width="66"
+                            label="方向">
+                        <template slot-scope="scope">
+                            <el-tag :type="scope.row.direction === '前端' ? 'primary' : 'success'"
+                                    disable-transitions>{{ scope.row.direction }}</el-tag>
+                        </template>
+                    </el-table-column>
+                    <el-table-column
+                            prop="position"
+                            width="66"
+                            label="职务">
+                        <template slot-scope="scope">
+                            <el-tag :type="scope.row.position === '组长' ? 'primary' : 'success'"
+                                    disable-transitions>{{ scope.row.position }}</el-tag>
+                        </template>
+                    </el-table-column>
+                    <el-table-column
+                            prop="status"
+                            width="66"
+                            label="状态">
+                        <template slot-scope="scope">
+                            <el-tag :type="scope.row.status === '在职' ? 'primary' : 'success'"
+                                    disable-transitions>{{ scope.row.status }}</el-tag>
+                        </template>
+                    </el-table-column>
+                </el-table>
             </div>
 
             <!-- 操作面板按钮组 -->
@@ -50,6 +100,42 @@
             return {
                 selectedGroupId: [],
                 cardSettingPanelHeight: 0,
+                tableData: [{
+                    name: 'XX',
+                    profession: '集成电力设计与集成系统',
+                    classes: '1503',
+                    direction: '产品',
+                    position: '成员',
+                    status: '在职'
+                }, {
+                    name: 'XX',
+                    profession: '集成电力设计与集成系统',
+                    classes: '1503',
+                    direction: '运营',
+                    position: '成员',
+                    status: '在职'
+                }, {
+                    name: 'XX',
+                    profession: '集成电力设计与集成系统',
+                    classes: '1503',
+                    direction: '视觉',
+                    position: '成员',
+                    status: '在职'
+                }, {
+                    name: '韩亦乐',
+                    profession: '软件工程',
+                    classes: '1503',
+                    direction: '前端',
+                    position: '组长',
+                    status: '在职'
+                }, {
+                    name: 'XX',
+                    profession: '集成电力设计与集成系统',
+                    classes: '1503',
+                    direction: '后端',
+                    position: '成员',
+                    status: '在职'
+                }, ],
                 // 当前 card 下的所有按钮信息
                 cardButtons: '',
                 // 当前 card 的所有贡献者
@@ -156,11 +242,12 @@
 
     .card-container .card-inner-container {
         font-size: 14px;
-        padding: 10px;
+        /* padding: 10px; */
         height: 300px;
     }
 
     .card-setting-panel {
+        z-index: 999;
         display: block;
         font-size: 14px;
         position: absolute;
